@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="app/appStyle.css">
  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
 
-<body>
-<div class="jumbotron text-center">
+<body ng-controller="myCtrl">
+<div class="hstyle text-center" ng-hide="register">
+    <div class="form-group">
+        <button type="" class="btn btn-primary" ng-click="create($event)">Register a User</button>
+    </div>
  </div>
-<div ng-app="myApp">
-  <div ng-view></div>
+<div class="container">
+    <div ng-view></div>
 </div>
 
 </body>
 <script type='text/javascript' src="app.js" charset="UTF-8"></script>
 <script src="app/maincontroller.js"></script>
+<script src="app/registerController.js"></script>
 
 
 </html>

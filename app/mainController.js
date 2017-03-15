@@ -1,6 +1,6 @@
 
 
-app.controller('myCtrl', function($scope,$http, $location) {
+app.controller('myCtrl', function($scope,$http, $location,$rootScope) {
 	$scope.message = "John";
 	$scope.totalData = [];
 
@@ -9,7 +9,11 @@ app.controller('myCtrl', function($scope,$http, $location) {
     	author:"",
     	description:""
     }
-
+$scope.create = function (event) {
+    debugger;
+    $rootScope.register =  true;
+    $location.path( "/register" );
+}
 $scope.saveData = function(event){
 	console.log($scope);
       $http({
@@ -22,7 +26,7 @@ $scope.saveData = function(event){
             debugger;
             alert(response.data.confirm);
            $scope.totalData = response.data.createdData;
-            $location.path( "/details" );
+            // $location.path( "/details" );
 
     }, 
     function(response) { // optional

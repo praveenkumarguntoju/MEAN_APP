@@ -4,14 +4,17 @@
 		<h3 class="panel-title" style="text-align: center;">Creating the book Details</h3>
 	</div>
 	<div class="panel-body">
-	<form>
+	<form name="sample" novalidate>
   <div class="form-group">
          <div class="row" style="padding: 2px;">
          	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 				<label for="title">Title</label>
 			</div>
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-		         <input type="text" class="form-control" id="title" ng-model="createData.title" placeholder="Enter title">
+		         <input type="text" name="title" class="form-control" id="title" ng-model="createData.title" placeholder="Enter title" required="">
+                <span ng-show="sample.title.$valid">Car Number is required</span>
+
+                <div ng-show="sample.createData.title.$valid">Tell us your name.</div>
 			</div>
          </div>
          <div class="row" style="padding: 2px;">
@@ -57,7 +60,4 @@
     </tbody>
   </table>
 </div>
-
- 
-	
 </div>

@@ -5,10 +5,12 @@ app.config(function($routeProvider) {
 	debugger;
     $routeProvider
     .when("/", {
-      templateUrl: 'app/header.html',
-       controller : "myCtrl"       
-    }).when("/details",{
+      templateUrl: 'app/header.html'
+     }).when("/details",{
     	templateUrl: 'app/details.html'
-    }) 
-    
+    }).when("/register",{
+        templateUrl: 'app/register.html',
+        controller : "registCtrl"
+    })
+
 });

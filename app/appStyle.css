@@ -1,0 +1,13 @@
+.rpadding{
+    padding-bottom: 4px;
+}
+.rborder{
+    border: 2px solid black;
+}
+.hstyle{
+    padding:20px;
+}
+.rmessage{
+    padding:0px;
+   color: #e03b38;
+}
