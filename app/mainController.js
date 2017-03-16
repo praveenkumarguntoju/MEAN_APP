@@ -4,6 +4,36 @@ app.controller('myCtrl', function($scope,$http, $location,$rootScope) {
 	$scope.message = "John";
 	$scope.totalData = [];
 
+
+$scope.editdetail = function (evt) {
+    $scope.$broadcast('editDetails', { action: 'edit' });
+}
+$scope.driverList = function (event) {
+          debugger;
+    $http({
+        url: '/app',
+        method: "post",
+        data: {action: "getData"}
+    })
+        .then(function (response) {
+            debugger;
+                alert(response.data.confirm);
+                $scope.driverData = response.data.driverData;
+                // $location.path( "/details" );
+            },
+            function (response) { // optional
+                debugger;
+            });
+};
+$scope.detailPage =function(drvData){
+    debugger;
+    var carno = drvData['CARNUM'];
+
+    $location.path('/details/' + carno );
+};
+
+
+
     $scope.createData = {
     	title:"",
     	author:"",
@@ -11,8 +41,7 @@ app.controller('myCtrl', function($scope,$http, $location,$rootScope) {
     }
 $scope.create = function (event) {
     debugger;
-    $rootScope.register =  true;
-    $location.path( "/register" );
+     $location.path( "/register" );
 }
 $scope.saveData = function(event){
 	console.log($scope);

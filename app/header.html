@@ -1,63 +1,43 @@
-<div class="container" >
-<div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title" style="text-align: center;">Creating the book Details</h3>
-	</div>
-	<div class="panel-body">
-	<form name="sample" novalidate>
-  <div class="form-group">
-         <div class="row" style="padding: 2px;">
-         	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-				<label for="title">Title</label>
-			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-		         <input type="text" name="title" class="form-control" id="title" ng-model="createData.title" placeholder="Enter title" required="">
-                <span ng-show="sample.title.$valid">Car Number is required</span>
-
-                <div ng-show="sample.createData.title.$valid">Tell us your name.</div>
-			</div>
-         </div>
-         <div class="row" style="padding: 2px;">
-         	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-				<label for="author">Author</label>
-			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-		         <input type="text" class="form-control" id="author" ng-model="createData.author"  placeholder="Enter author name">
-			</div>
-         </div>
-         <div class="row" style="padding: 2px;">
-         	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-				<label for="description">Description</label>
-			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-		       <input type="text" class="form-control" id="description" ng-model="createData.description"   placeholder="Enter Description">
-			</div>
-         </div>
-      </div>
-  <div class="form-group">
-    <button type="" class="btn btn-primary" ng-click="saveData($event)">Save</button>
-    <button  class="btn btn-primary">Cancel</button>
-  </div>
-  </form>
-</div>
-</div>
-
 <div class="row">
-	 <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>description</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="x in totalData">
-        <td>{{x.title}}</td>
-        <td>{{x.author}}</td>
-        <td>{{x.description}}</td>
-    </tr>
-    </tbody>
-  </table>
+    <div class="col-md-4">
+        <button id="submit"  class="btn btn-primary" ng-click="driverList($event)">List of Drivers</button>
+     </div>
 </div>
-</div>
+
+    <div class="row">
+        <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Car Number</th>
+                <th>Car Name</th>
+                <th>Address One</th>
+                <th>Address 2</th>
+                <th>City</th>
+                <th>Zip Code</th>
+                <th>Country</th>
+                <th>Phone Number</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in driverData" ng-click="detailPage(x)">
+                <td> {{ x.DRVFNAME}}</td>
+                <td>{{ x.DRVLNAME}}</td>
+                <td> {{ x.DRVAGE}}</td>
+                <td>{{ x.CARNUM}}</td>
+                <td>{{ x.CARNAME}}</td>
+                <td> {{ x.ADDRS1}}</td>
+                <td> {{ x.ADDRS2}}</td>
+                <td> {{ x.CITY}}</td>
+                <td> {{ x.ZIPCODE}}</td>
+                <td> {{ x.COUNTRY}}</td>
+                <td>{{ x.PHNO}}</td>
+
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>

@@ -6,11 +6,12 @@ app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
       templateUrl: 'app/header.html'
-     }).when("/details",{
-    	templateUrl: 'app/details.html'
+     }).when("/details/:carno",{
+    	templateUrl: 'app/details.html',
+        controller: "detailCtrl"
     }).when("/register",{
         templateUrl: 'app/register.html',
-        controller : "registCtrl"
+        controller: "registCtrl"
     })
 
 });

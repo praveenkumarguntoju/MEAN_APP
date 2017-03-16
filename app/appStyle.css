@@ -11,3 +11,11 @@
     padding:0px;
    color: #e03b38;
 }
+.label{
+    color: black;
+}
+.iedit{
+    border: none;
+    -webkit-box-shadow:none !important;
+    box-shadow:none !important;
+}

@@ -83,6 +83,8 @@ var file = fs.createWriteStream(__dirname + "/acess.log", {flags :'a'});
 app.use(morgan('combined',{stream:file}));
 
 app.get('*', function (req, res) {
+    console.log(req.path);
+   var path = req.path;
    if(req.path == '/'){
      res.sendFile( __dirname + "/" + "index.html" );
    }else
@@ -99,21 +101,40 @@ switch(action) {
         driverDetails.create(data, function (err) {
                  if (err) {
                        console.log(err);
-                     res.send({message :err });
-                       }
+                       return handleError(err);
+                          }else{
+                     res.send({confirm : "created" });
+                     console.log("created");
+                        }
+
                       });
-           console.log("created");
-            var docsdata;
-        // driverDetails.find({}, function (err, docs) {
-        //               docsdata = docs;
-        //               res.send({confirm : "created",createdData :docsdata });
-        //           });
+
+
             
         break;
-    case n:
-        
+    case 'getData':
+        console.log('app');
+            var docsdata;
+            console.log(driverDetails);
+            driverDetails.find({}, function (err, docs) {
+                docsdata = docs;
+                console.log(docsdata);
+                res.send({driverData: docsdata});
+            });
+         break;
+
+    case 'getDetail':
+        console.log(data);
+        driverDetails.find({CARNUM:data}, function (err, docs) {
+            docsdata = docs;
+            console.log(docsdata);
+            if(docsdata){
+                res.send({driverDetail: docsdata[0]});
+            }
+
+        });
         break;
-    default:
+     default:
        
 }
 })
