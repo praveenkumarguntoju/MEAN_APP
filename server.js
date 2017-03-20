@@ -1,15 +1,23 @@
 var express = require('express');
 var app = express();
+var fpath = require('path');
 // var MongoClient = require('mongodb').MongoClient;
 var mongoose = require("mongoose");
 // console.log(mongoose);
 var morgan = require("morgan");
+
+var exfileUpload = require('express-fileupload');
+app.use(exfileUpload());
+
+
 var fs   = require("fs");
 var bodyParser = require('body-parser')
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
+
+
 
 
 // mangoose http._connectionListener(socket);
@@ -62,8 +70,9 @@ var driverSchema = new Schema({
     CITY:String,
     ZIPCODE:Number,
     COUNTRY:String,
-    PHNO:Number
-})
+    PHNO:Number,
+    picFile:{type:String}
+},{ strict: false })
 
 
 // var BookDetail = mongoose.model('BookDetail',blogSchema);
@@ -96,15 +105,23 @@ app.post('/app',function (req, res) {
    console.log(req.body)
    var action = req.body.action;
    var data   = req.body.data;
+   var fname  = req.body.fileName;
 switch(action) {
     case 'create':
+
+        driverDetails.update(
+            {picFile:data.picFile},
+            function(err, numberAffected){
+            });
+
         driverDetails.create(data, function (err) {
-                 if (err) {
+             if (err) {
                        console.log(err);
                        return handleError(err);
                           }else{
                      res.send({confirm : "created" });
                      console.log("created");
+
                         }
 
                       });
@@ -133,6 +150,68 @@ switch(action) {
             }
 
         });
+        break;
+    case 'upLoad':
+        console.log('upload');
+
+
+        function decodeBase64Image(dataString) {
+               var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+            response = {};
+
+        if (matches.length !== 3) {
+            return new Error('Invalid input string');
+        }
+
+        response.type = matches[1];
+        response.data = new Buffer(matches[2], 'base64');
+
+        return response;
+        };
+        var imageBuffer = decodeBase64Image(data);
+        var newPath = __dirname + "/app/images/" + fname;
+        fs.writeFile(newPath, imageBuffer.data, function(err) {
+                res.send({confirm : "uploaded" , filename:fname });
+             });
+
+
+
+
+
+
+
+
+
+
+       // console.log( data.file.path);
+       //  var tempPath = data.file.path;
+       //  console.log(tempPath);
+       //  var targetPath = fpath.resolve('./app/images');
+       //  console.log(targetPath);
+       //
+       //      fs.rename(tempPath, targetPath, function(err) {
+       //          if (err) throw err;
+       //          console.log("Upload completed!");
+       //      });
+       //  if (!data)
+       //       return res.status(400).send('No files were uploaded.');
+       //  console.log(data);
+       //
+       //  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+       // var sampleFile = data.sampleFile;
+       //
+       //  console.log('sampleFile');
+       //  console.log(sampleFile.mv);
+       //
+       //  // Use the mv() method to place the file somewhere on your server
+       //  sampleFile.mv('./app/images/filename.jpg', function(err) {
+       //      if (err)
+       //          return res.status(500).send(err);
+       //
+       //      res.send('File uploaded!');
+       //  });
+
+
         break;
      default:
        

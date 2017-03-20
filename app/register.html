@@ -131,6 +131,18 @@
             <span class="rmessage" ng-show="!frmRegister.phone.$valid">Phone is required</span>
         </div>
     </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 rpadding">
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="phone">Upload Image</label>
+                <div class="col-md-4">
+                    <!--<input type="file" class="fileUpload"  name="sampleFile" />-->
+                    <!--<input type = "file" class="fileUpload"  file-model = "myFile"/>-->
+                    <input type="file" class="fileUpload" ngf-select="" ng-model="driverDetails.picFile" name="file" ngf-accept="'image/*'" required="">
+                </div>
+
+            </div>
+        </div>
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 rpadding">
         <div class="form-group">

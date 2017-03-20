@@ -1,13 +1,17 @@
 
 
 app.controller('myCtrl', function($scope,$http, $location,$rootScope) {
-	$scope.message = "John";
 	$scope.totalData = [];
+	$scope.displayBtn = false;
+	$scope.editBtn    = false;
 
 
 $scope.editdetail = function (evt) {
     $scope.$broadcast('editDetails', { action: 'edit' });
 }
+    $scope.displaydetail = function (evt) {
+        $scope.$broadcast('editDetails', { action: 'display' });
+    }
 $scope.driverList = function (event) {
           debugger;
     $http({
@@ -28,6 +32,7 @@ $scope.driverList = function (event) {
 $scope.detailPage =function(drvData){
     debugger;
     var carno = drvData['CARNUM'];
+    $scope.editBtn = true;
 
     $location.path('/details/' + carno );
 };

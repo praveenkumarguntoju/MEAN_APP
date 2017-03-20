@@ -4,11 +4,25 @@
 app.controller('detailCtrl', function($scope,$http, $location,$rootScope,$route) {
     debugger;
     $scope.displayDetail = true;
+    $scope.$parent.editBtn = true;
 
     $scope.$on('editDetails', function (event, args) {
         debugger;
-        $scope.action = args.action;
-        console.log($scope.action);
+        if(args.action == 'edit'){
+            $scope.action = args.action;
+            $scope.displayDetail = false;
+            $scope.$parent.displayBtn = true;
+            $scope.$parent.editBtn = false;
+            console.log($scope.action);
+        }else if(args.action == 'display'){
+            $scope.$parent.displayBtn = false;
+            $scope.$parent.editBtn = true;
+            $scope.displayDetail = true;
+        }else{
+
+        }
+
+
     });
     $scope.driverDetails = '';
     $scope.init = function() {

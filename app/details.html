@@ -1,5 +1,7 @@
 <div class="panel-default jumbotron">
     <div class="panel-body">
+
+        </div>
         <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <div class="col-md-6">
@@ -31,18 +33,21 @@
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <div class="col-md-6">
-                    <h4><span class="label">Age</span></h4>
+
                 </div>
-                <div class="col-md-6">
-                    <input data-ng-model="driverDetails.DRVAGE"
-                           class="form-control iedit"
-                           type="text"
-                           ng-disabled="displayDetail"
-                    />
+                <div class="col-md-6" style="margin-top: -50px;">
+                    <img ng-src="{{driverDetails.picFile}}" class="img-fluid rounded-circle" alt="Image"  height="80">
 
                 </div>
 
             </div>
+            <!--<div class="row">-->
+
+                <!--<div class="col-md-3 pull-right">-->
+                    <!--<img ng-src="{{driverDetails.picFile}}" class="img-rounded" alt="Image"  height="80">-->
+
+                <!--</div>-->
+
         </div>
         <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -150,7 +155,26 @@
                 </div>
 
             </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="col-md-6">
+                    <h4><span class="label">Age</span></h4>
+                </div>
+                <div class="col-md-6">
+                    <input data-ng-model="driverDetails.DRVAGE"
+                           class="form-control iedit"
+                           type="text"
+                           ng-disabled="displayDetail"
+                    />
 
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row" ng-hide="displayDetail">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pull-right">
+            <button  class="btn btn-primary navbar-btn"  ng-click="updateDetails($event)">Update</button>
+            </div>
         </div>
     </div>
 </div>

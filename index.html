@@ -6,20 +6,47 @@
  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
 
-<body ng-controller="myCtrl">
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container-fluid pull-right">
-        <div class="navbar-header">
-
-            <button  class="btn btn-primary navbar-btn" ng-hide="register" ng-click="editdetail($event)">Edit</button>
-            <button  class="btn btn-primary navbar-btn" ng-hide="register" ng-click="create($event)">Register a User</button>
+<body ng-controller="myCtrl" id="background">
+<div class="container-fluid">
+<div class="row headerImage ">
+    <div class="navbar-header">
+        <img src="/app/images/taxiImage.jpg" style="height:50px;">
         </div>
-    </div>
-</nav>
+    <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+            <div ng-show="displayBtn">
+                <button   class="btn btn-primary" ng-hide="register" ng-click="displaydetail($event)">Display</button>
+            </div>
+            <div ng-show="editBtn">
+                <button  ng-show="editBtn" class="btn btn-primary" ng-hide="register" ng-click="editdetail($event)">Edit</button>
+            </div>
+            <button  class="btn btn-primary" ng-hide="register" ng-click="create($event)">Register a User</button>
+        </div>
+
+    </form>
+</div>
+</div>
+
+
+<!--<nav class="navbar navbar-default navbar-static-top">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-header">-->
+        <!--</div>-->
+            <!--<div ng-show="displayBtn">-->
+                <!--<button   class="btn btn-primary navbar-btn" ng-hide="register" ng-click="displaydetail($event)">Display</button>-->
+            <!--</div>-->
+            <!--<div ng-show="editBtn">-->
+            <!--<button  ng-show="editBtn" class="btn btn-primary navbar-btn" ng-hide="register" ng-click="editdetail($event)">Edit</button>-->
+            <!--</div>-->
+            <!--<button  class="btn btn-primary navbar-btn" ng-hide="register" ng-click="create($event)">Register a User</button>-->
+
+    <!--</div>-->
+<!--</nav>-->
 
 <div class="container">
     <div ng-view></div>
 </div>
+
 
 </body>
 <script type='text/javascript' src="app.js" charset="UTF-8"></script>
