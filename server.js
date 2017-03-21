@@ -173,46 +173,24 @@ switch(action) {
         fs.writeFile(newPath, imageBuffer.data, function(err) {
                 res.send({confirm : "uploaded" , filename:fname });
              });
-
-
-
-
-
-
-
-
-
-
-       // console.log( data.file.path);
-       //  var tempPath = data.file.path;
-       //  console.log(tempPath);
-       //  var targetPath = fpath.resolve('./app/images');
-       //  console.log(targetPath);
-       //
-       //      fs.rename(tempPath, targetPath, function(err) {
-       //          if (err) throw err;
-       //          console.log("Upload completed!");
-       //      });
-       //  if (!data)
-       //       return res.status(400).send('No files were uploaded.');
-       //  console.log(data);
-       //
-       //  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-       // var sampleFile = data.sampleFile;
-       //
-       //  console.log('sampleFile');
-       //  console.log(sampleFile.mv);
-       //
-       //  // Use the mv() method to place the file somewhere on your server
-       //  sampleFile.mv('./app/images/filename.jpg', function(err) {
-       //      if (err)
-       //          return res.status(500).send(err);
-       //
-       //      res.send('File uploaded!');
-       //  });
+       break;
+    case 'updateDetail':
+        var conditions = {CARNUM:data.CARNUM};
+        console.log(conditions);
+        options = { multi: true };
+         function callback(err, numAffected) {
+              if (err) {
+                 console.log(err);
+                 return handleError(err);
+             }else {
+                 res.send({confirm: "Successfully updated", number: numAffected});
+             }
+             };
+        driverDetails.update(conditions,data, options, callback);
 
 
         break;
+
      default:
        
 }

@@ -45,4 +45,23 @@ app.controller('detailCtrl', function($scope,$http, $location,$rootScope,$route)
     $scope.init();
 
 
+    $scope.updateDetails = function (evt) {
+
+        $http({
+            url: '/app',
+            method: "POST",
+            data: { action:"updateDetail",data:$scope.driverDetails}
+        }).then(function(response) {
+            debugger;
+            $scope.driverDetails = response.data.driverDetail;
+            alert(response.data.confirm);
+            $location.path("/");
+            $rootScope.register = false;
+        }, function(response) {
+            debugger;
+        });
+
+    }
+
+
 });

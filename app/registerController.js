@@ -63,6 +63,8 @@ app.controller('registCtrl',function ($scope,$http, $location,$rootScope) {
 
 
 
+
+
     $scope.saveDetails =function (event) {
         debugger;
         $rootScope.register = false;
