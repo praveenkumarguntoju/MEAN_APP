@@ -4,7 +4,7 @@ app.controller('myCtrl', function($scope,$http, $location,$rootScope) {
 	$scope.totalData = [];
 	$scope.displayBtn = false;
 	$scope.editBtn    = false;
-
+    $scope.driverData = [];
 
 $scope.editdetail = function (evt) {
     $scope.$broadcast('editDetails', { action: 'edit' });
@@ -12,6 +12,12 @@ $scope.editdetail = function (evt) {
     $scope.displaydetail = function (evt) {
         $scope.$broadcast('editDetails', { action: 'display' });
     }
+
+    $scope.deletedetail = function (evt) {
+        $scope.$broadcast('editDetails', { action: 'delete' });
+    }
+
+
 $scope.driverList = function (event) {
           debugger;
     $http({

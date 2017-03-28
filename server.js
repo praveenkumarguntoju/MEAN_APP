@@ -144,7 +144,7 @@ switch(action) {
         console.log(data);
         driverDetails.find({CARNUM:data}, function (err, docs) {
             docsdata = docs;
-            console.log(docsdata);
+
             if(docsdata){
                 res.send({driverDetail: docsdata[0]});
             }
@@ -152,10 +152,7 @@ switch(action) {
         });
         break;
     case 'upLoad':
-        console.log('upload');
-
-
-        function decodeBase64Image(dataString) {
+       function decodeBase64Image(dataString) {
                var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
             response = {};
 
@@ -176,7 +173,6 @@ switch(action) {
        break;
     case 'updateDetail':
         var conditions = {CARNUM:data.CARNUM};
-        console.log(conditions);
         options = { multi: true };
          function callback(err, numAffected) {
               if (err) {
@@ -187,6 +183,21 @@ switch(action) {
              }
              };
         driverDetails.update(conditions,data, options, callback);
+
+
+        break;
+    case 'deleteDetail':
+        var conditions = {CARNUM:data.CARNUM};
+        options = { multi: true };
+    function callback(err, numAffected) {
+        if (err) {
+            console.log(err);
+            return handleError(err);
+        }else {
+            res.send({confirm: "Successfully deleted", number: numAffected});
+        }
+    };
+        driverDetails.remove(conditions,callback);
 
 
         break;

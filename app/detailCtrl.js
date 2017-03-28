@@ -6,6 +6,8 @@ app.controller('detailCtrl', function($scope,$http, $location,$rootScope,$route)
     $scope.displayDetail = true;
     $scope.$parent.editBtn = true;
 
+
+
     $scope.$on('editDetails', function (event, args) {
         debugger;
         if(args.action == 'edit'){
@@ -19,8 +21,18 @@ app.controller('detailCtrl', function($scope,$http, $location,$rootScope,$route)
             $scope.$parent.editBtn = true;
             $scope.displayDetail = true;
         }else{
-
-        }
+            $http({
+                url: '/app',
+                method: "POST",
+                data: { action:"deleteDetail",data:$scope.driverDetails}
+            }).then(function(response) {
+                alert(response.data.confirm);
+                $location.path("/");
+                $rootScope.register = false;
+            }, function(response) {
+                debugger;
+            });
+            }
 
 
     });

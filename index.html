@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="app/appStyle.css">
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -25,6 +25,7 @@
         <!-- Navbar Links -->
         <div class="collapse navbar-collapse">
             <div class="pull-right">
+                <button class="btn btn-primary" ng-hide="register" ng-click="deletedetail($event)">Delete</button>
                 <span ng-show="displayBtn">
                 <button class="btn btn-primary" ng-hide="register" ng-click="displaydetail($event)">Display</button>
                 </span>
@@ -40,28 +41,8 @@
 </div>
 
 
-
-
-
-
-
-<!--<nav class="navbar navbar-default navbar-static-top">-->
-    <!--<div class="container-fluid">-->
-        <!--<div class="navbar-header">-->
-        <!--</div>-->
-            <!--<div ng-show="displayBtn">-->
-                <!--<button   class="btn btn-primary navbar-btn" ng-hide="register" ng-click="displaydetail($event)">Display</button>-->
-            <!--</div>-->
-            <!--<div ng-show="editBtn">-->
-            <!--<button  ng-show="editBtn" class="btn btn-primary navbar-btn" ng-hide="register" ng-click="editdetail($event)">Edit</button>-->
-            <!--</div>-->
-            <!--<button  class="btn btn-primary navbar-btn" ng-hide="register" ng-click="create($event)">Register a User</button>-->
-
-    <!--</div>-->
-<!--</nav>-->
-
-<div class="container">
-    <div ng-view></div>
+<div class="container" style="height:calc(100% - 60px);">
+    <div ng-view style="height: 100%"></div>
 </div>
 
 
