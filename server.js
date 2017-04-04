@@ -1,13 +1,13 @@
 var express = require('express');
 var app = express();
-var fpath = require('path');
+// var fpath = require('path');
 // var MongoClient = require('mongodb').MongoClient;
 var mongoose = require("mongoose");
 // console.log(mongoose);
 var morgan = require("morgan");
 
-var exfileUpload = require('express-fileupload');
-app.use(exfileUpload());
+// var exfileUpload = require('express-fileupload');
+// app.use(exfileUpload());
 
 
 var fs   = require("fs");
